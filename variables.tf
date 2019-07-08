@@ -15,6 +15,17 @@ variable "aws_region" {
     default = "us-east-2"
 }
 
+variable "vpc_id" {
+    description = "VPC to connect to, used for a security group"
+    type = "string"
+}
+
+
+variable "prefix" {
+    default = "${var.owner}-"
+}
+
+
 // 
 // Tags 
 //
