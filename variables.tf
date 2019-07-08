@@ -6,8 +6,9 @@ variable "vpc_id" {
     type = "string"
 }
 
-variable "public" {
-    type = bool
+variable "base_acl" {
+    default = "private"
+    type = string
 }
 
 variable "prefix" {
