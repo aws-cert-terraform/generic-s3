@@ -8,7 +8,7 @@ variable "vpc_id" {
 
 variable "base_acl" {
     default = "private"
-    type = string
+    type = "string"
 }
 
 variable "prefix" {
