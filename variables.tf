@@ -6,6 +6,9 @@ variable "vpc_id" {
     type = "string"
 }
 
+variable "public" {
+    type = bool
+}
 
 variable "prefix" {
     description = "a prefix for resources to be identified"
