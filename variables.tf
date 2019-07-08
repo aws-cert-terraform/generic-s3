@@ -22,7 +22,7 @@ variable "vpc_id" {
 
 
 variable "prefix" {
-    default = "${var.owner}-"
+    description = "a prefix for resources to be identified"
 }
 
 
