@@ -1,11 +1,34 @@
 
+data "aws_elb_service_account" "main" {}
 
 resource "aws_s3_bucket" "b" {
   bucket = "${var.name}"
-  acl    = "${var.base_acl}"
+  acl    = "private"
 
-  tags = {
-    Name        = "${var.prefix}${var.owner}"
+  policy = <<POLICY
+{
+  "Id": "Policy",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::${var.name}/AWSLogs/*",
+      "Principal": {
+        "AWS": [
+          "${data.aws_elb_service_account.main.arn}"
+        ]
+      }
+    }
+  ]
+}
+POLICY
+
+  tags {
+    Name        = "${var.prefix}-${var.owner}"
     Environment = "dev"
   }
 }
+
