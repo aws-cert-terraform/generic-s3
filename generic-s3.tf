@@ -5,6 +5,11 @@ resource "aws_s3_bucket" "b" {
   bucket = "${var.name}"
   acl    = "private"
 
+  tags = {
+    Environment = "dev"
+    Owner = "icullinane"
+  }
+
   policy = <<POLICY
 {
   "Id": "Policy",
@@ -25,10 +30,5 @@ resource "aws_s3_bucket" "b" {
   ]
 }
 POLICY
-
-  tags {
-    Name        = "${var.prefix}-${var.owner}"
-    Environment = "dev"
-  }
 }
 

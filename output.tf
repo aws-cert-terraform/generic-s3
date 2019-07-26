@@ -13,4 +13,3 @@ output "bucket_domain_name" {
     value = element(split(".",aws_s3_bucket.b.bucket_domain_name), 0)
 }
 
-
