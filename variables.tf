@@ -6,6 +6,12 @@ variable "vpc_id" {
     type = "string"
 }
 
+variable "policy" {
+    description = "A bucket policy (json)"
+    type = "string"
+    default = ""
+}
+
 variable "base_acl" {
     default = "private"
     type = "string"
@@ -20,8 +26,8 @@ variable "prefix" {
 // Tags 
 //
 
-variable "name" {
-    default = "generic-s3"
+variable "bucket_name" {
+    description = "The unique bucket name"
 }
 
 variable "project" {
